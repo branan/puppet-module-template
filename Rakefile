@@ -43,6 +43,7 @@ task :spec_prep do
     File::exists?(target) || system("git clone #{repo} #{target}")
   end
 
+  FileUtils::mkdir_p("spec/fixtures/modules")
   fixtures("symlinks").each do |source, target|
     File::exists?(target) || FileUtils::ln_s(source, target)
   end
